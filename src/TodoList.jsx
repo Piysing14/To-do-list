@@ -1,25 +1,18 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import "./TodoList.css"; // Import the CSS file
 
 export default function TodoList() {
-  // const [todos, setTodos] = useState("Sample task"); Before using array object
   const [todos, setTodos] = useState([
     { task: "Sample task", id: uuidv4(), isDone: false },
   ]);
   const [newTodo, setNewTodo] = useState("");
 
-  //   let addNewTask = () => {
-  //     // setTodos([...todos, newTodo]); before UUID use
-  //     setTodos([...todos, {task: newTodo, id : uuidv4()}]); //new after UUID use, object is created
-  //     setNewTodo(" ");
-  //   }; // Old function without callback
-
-  //new Function using callback
   let addNewTask = () => {
     setTodos((prevTodos) => {
       return [...prevTodos, { task: newTodo, id: uuidv4(), isDone: false }];
     });
-    setNewTodo(" ");
+    setNewTodo("");
   };
 
   let updateTodoValue = (event) => {
@@ -27,8 +20,7 @@ export default function TodoList() {
   };
 
   let deleteTodo = (id) => {
-    // setTodos(todos.filter((todo)=>todo.id !=id)); old without callback
-    setTodos((prevTodos) => todos.filter((prevTodos) => prevTodos.id != id)); //with callback
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   let upperCaseAll = () => {
@@ -45,7 +37,7 @@ export default function TodoList() {
   let UpperCaseOne = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) => {
-        if (todo.id == id) {
+        if (todo.id === id) {
           return {
             ...todo,
             task: todo.task.toUpperCase(),
@@ -60,7 +52,7 @@ export default function TodoList() {
   let markAsDone = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) => {
-        if (todo.id == id) {
+        if (todo.id === id) {
           return {
             ...todo,
             isDone: true,
@@ -84,40 +76,54 @@ export default function TodoList() {
   };
 
   return (
-    <div>
-      <h3>To-Do-List</h3>
-      <input
-        placeholder="Enter a Task"
-        value={newTodo}
-        onChange={updateTodoValue}
-      />
-      <br />
-      <button onClick={addNewTask}>Add</button>
+    <div className="todo-container">
+      <h3 className="title">To-Do List</h3>
+      <div className="input-container">
+        <input
+          className="todo-input"
+          placeholder="Enter a Task"
+          value={newTodo}
+          onChange={updateTodoValue}
+        />
+        <button className="add-button" onClick={addNewTask}>
+          Add
+        </button>
+      </div>
 
-      <br />
-      <br />
       <hr />
-      <h4>Task's to do</h4>
-      <ul>
+      <h4 className="tasks-title">Tasks to Do</h4>
+      <ul className="todo-list">
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} className="todo-item">
             <span
-              style={todo.isDone ? { textDecorationLine: "line-through" } : {}}
+              style={ 
+                todo.isDone ? { textDecorationLine: "line-through", color: "grey" } : {}
+              }
             >
               {todo.task}
             </span>
-            &nbsp; &nbsp;
-            <button onClick={() => deleteTodo(todo.id)}>delete</button>
-            &nbsp; &nbsp;
-            <button onClick={() => UpperCaseOne(todo.id)}>Uppercase</button>
-            &nbsp; &nbsp;
-            <button onClick={() => markAsDone(todo.id)}>Mark as Done</button>
+            <div className="button-group">
+              <button className="delete-button" onClick={() => deleteTodo(todo.id)}>
+                Delete
+              </button>
+              <button className="uppercase-button" onClick={() => UpperCaseOne(todo.id)}>
+                Uppercase
+              </button>
+              <button className="done-button" onClick={() => markAsDone(todo.id)}>
+                Mark as Done
+              </button>
+            </div>
           </li>
         ))}
       </ul>
-      <br />
-      <button onClick={upperCaseAll}>Uppercase All</button>
-      <button onClick={markAllasDone}>Mark all as done</button>
+      <div className="footer-buttons">
+        <button className="uppercase-all-button" onClick={upperCaseAll}>
+          Uppercase All
+        </button>
+        <button className="mark-all-done-button" onClick={markAllasDone}>
+          Mark All as Done
+        </button>
+      </div>
     </div>
   );
 }

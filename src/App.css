@@ -40,3 +40,148 @@
 .read-the-docs {
   color: #888;
 }
+
+/* TodoList.css */
+.todo-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-input {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.add-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+.tasks-title {
+  text-align: center;
+  color: #555;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-item {
+  background: white;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-button,
+.uppercase-button,
+.done-button,
+.uppercase-all-button,
+.mark-all-done-button {
+  padding: 5px 10px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.uppercase-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.uppercase-button:hover {
+  background-color: #0069d9;
+}
+
+.done-button {
+  background-color: #ffc107;
+  color: white;
+}
+
+.done-button:hover {
+  background-color: #e0a800;
+}
+
+.footer-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.uppercase-all-button,
+.mark-all-done-button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.uppercase-all-button {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.uppercase-all-button:hover {
+  background-color: #138496;
+}
+
+.mark-all-done-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.mark-all-done-button:hover {
+  background-color: #218838;
+}
